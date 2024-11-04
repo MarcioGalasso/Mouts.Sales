@@ -1,0 +1,12 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Mouts.Sales/FileContentIndex
+/Mouts.Sale.Api/bin/Debug/net6.0
+/Mouts.Sale.Api/obj/Container
+/Mouts.Sale.Api/obj
+/Mouts.Sale.Data/obj
+/Mouts.Sale.Domain/obj/Debug/net6.0
+/Mouts.Sale.Domain/obj
+*.user
