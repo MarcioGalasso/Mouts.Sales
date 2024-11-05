@@ -1,4 +1,5 @@
-﻿using Mouts.Sale.Data.External;
+﻿using Mouts.Sale.Data.Enum;
+using Mouts.Sale.Data.External;
 
 namespace Mouts.Sale.Data.Entities
 {
@@ -13,6 +14,8 @@ namespace Mouts.Sale.Data.Entities
         public virtual EnterpriseExternal Enterprise { get; set; }
         public virtual List<SaleItems> Items { get; set; }
         public virtual List<SaleDiscounts> Discounts { get; set; }
+
+        public SaleStatusEnum Status { get; set; }
 
     }
 }
