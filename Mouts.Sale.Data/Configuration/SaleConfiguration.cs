@@ -26,6 +26,7 @@ namespace Mouts.Sale.Data.Configuration
             builder.HasOne(x => x.Customer)
            .WithMany()
            .HasForeignKey(p => p.CustomerExternalId)
+           .OnDelete(DeleteBehavior.Cascade)
            .IsRequired();
 
             builder.HasOne(x => x.Enterprise)

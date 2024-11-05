@@ -1,10 +1,4 @@
-﻿using Mouts.Sale.Domain.External;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Mouts.Sale.Data.Entities
 {
     public class SaleDiscounts
