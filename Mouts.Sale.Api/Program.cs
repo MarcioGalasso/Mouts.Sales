@@ -6,8 +6,15 @@ using Mouts.Sale.Data.External;
 
 public class Program
 {
+    public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddEnvironmentVariables()
+            .Build();
     public static void Main(string[] args)
     {
+
+
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -19,7 +26,7 @@ public class Program
         builder.Services.ConfigureServices()
             .ConfigureDbContext()
             .ConfigureAutomapper()
-            .ConfigureMassTransit();
+            .ConfigureMassTransit(Configuration);
         builder.Services.AddHostedService<SetupDataBase>();
 
         var app = builder.Build();
