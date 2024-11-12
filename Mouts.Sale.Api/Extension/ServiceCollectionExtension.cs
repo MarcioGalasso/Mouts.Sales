@@ -6,6 +6,10 @@ using Scrutor;
 using Mouts.Sale.Domain.Interface;
 using Microsoft.Extensions.DependencyModel;
 using System.Reflection;
+using MassTransit;
+using MassTransit.RabbitMqTransport;
+using Mouts.Sale.Domain.MassageBroker.Consumer;
+using MassTransit.BusConfigurators;
 
 namespace Mouts.Sale.Api.Extension
 {
@@ -36,13 +40,32 @@ namespace Mouts.Sale.Api.Extension
         public static IServiceCollection ConfigureDbContext(this IServiceCollection services)
         {
             services.AddDbContext<SaleDbContext>(options =>
-                options.UseInMemoryDatabase("InMemory"));
+                options.UseInMemoryDatabase("InMemory"), ServiceLifetime.Singleton);
             return services;
         }
 
         public static IServiceCollection ConfigureAutomapper(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(SaleProfile));
+            return services;
+
+        }
+        public static IServiceCollection ConfigureMassTransit(this IServiceCollection services)
+        {
+            services.AddMassTransit(config =>
+            {
+
+                config.AddConsumer<StockManagementConsumer>();
+                config.UsingRabbitMq((context, cfg) =>
+                {
+                    
+                    cfg.Host("localhost", "/", h => { 
+                        h.Username("guest");
+                        h.Password("guest"); });
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+            
             return services;
         }
     }

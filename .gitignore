@@ -10,3 +10,12 @@
 /Mouts.Sale.Domain/obj/Debug/net6.0
 /Mouts.Sale.Domain/obj
 *.user
+/Mouts.Sale.Domain/bin/Debug/net6.0/Mouts.Sale.Data.dll
+/Mouts.Sale.Domain/bin/Debug/net6.0
+/Mouts.Sale.Test/bin/Debug/net6.0
+/Mouts.Sale.Test/obj
+/Mouts.Sale.Data/bin/Debug/net6.0/Mouts.Sale.Data.dll
+/Mouts.Sale.Data/bin/Debug/net6.0/Mouts.Sale.Data.pdb
+/Mouts.Sale.Data/bin/Debug/net6.0/Mouts.Sale.Data.pdb
+/Mouts.Sale.Data/bin/Debug/net6.0/Mouts.Sale.Data.dll
+/.vs
