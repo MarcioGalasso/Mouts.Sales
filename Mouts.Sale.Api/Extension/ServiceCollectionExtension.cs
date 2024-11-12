@@ -10,6 +10,7 @@ using MassTransit;
 using MassTransit.RabbitMqTransport;
 using Mouts.Sale.Domain.MassageBroker.Consumer;
 using MassTransit.BusConfigurators;
+using MassTransit.Futures.Contracts;
 
 namespace Mouts.Sale.Api.Extension
 {
@@ -50,7 +51,7 @@ namespace Mouts.Sale.Api.Extension
             return services;
 
         }
-        public static IServiceCollection ConfigureMassTransit(this IServiceCollection services)
+        public static IServiceCollection ConfigureMassTransit(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMassTransit(config =>
             {
@@ -59,9 +60,9 @@ namespace Mouts.Sale.Api.Extension
                 config.UsingRabbitMq((context, cfg) =>
                 {
                     
-                    cfg.Host("localhost", "/", h => { 
-                        h.Username("guest");
-                        h.Password("guest"); });
+                    cfg.Host(configuration.GetSection("MessageBus:host").Value, "/", h => { 
+                        h.Username(configuration.GetSection("MessageBus:username").Value);
+                        h.Password(configuration.GetSection("MessageBus:password").Value); });
                     cfg.ConfigureEndpoints(context);
                 });
             });
