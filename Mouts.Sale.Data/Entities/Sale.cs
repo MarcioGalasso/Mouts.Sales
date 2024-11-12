@@ -17,5 +17,6 @@ namespace Mouts.Sale.Data.Entities
 
         public SaleStatusEnum Status { get; set; }
 
+
     }
 }
